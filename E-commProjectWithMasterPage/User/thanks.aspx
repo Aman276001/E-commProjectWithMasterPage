@@ -2,5 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<h1>Thanks________>>>>>>>>></h1>
+	<div class="text-center ">
+	<h1 class="mb-5 mt-5">Payment Successfully.... </h1>
+	<asp:Button ID="Button1" CssClass="btn btn-success w-50" runat="server" OnClick="Button1_Click" Text="Countinue Shoppinng >>" />
+	</div>
 	</asp:Content>
