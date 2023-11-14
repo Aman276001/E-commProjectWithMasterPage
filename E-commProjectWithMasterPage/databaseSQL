@@ -1,0 +1,247 @@
+USE [newEcomm]
+GO
+/****** Object:  Table [dbo].[BankName]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BankName](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[BankName] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[cart]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[cart](
+	[cart_id] [int] IDENTITY(1,1) NOT NULL,
+	[itemCartID] [int] NULL,
+	[userCartID] [int] NULL,
+	[cartQty] [int] NULL,
+	[cartCost] [decimal](18, 2) NULL,
+	[cartDatetime] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cart_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Category]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Category](
+	[cat_id] [int] IDENTITY(1,1) NOT NULL,
+	[cat_Name] [varchar](50) NULL,
+	[salllerCatId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cat_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[IndiaState]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[IndiaState](
+	[stateId] [int] IDENTITY(1,1) NOT NULL,
+	[StateName] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[stateId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[item]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[item](
+	[item_id] [int] IDENTITY(1,1) NOT NULL,
+	[item_Name] [varchar](100) NULL,
+	[item_Price] [decimal](18, 2) NULL,
+	[item_Totol_Quantity] [bigint] NULL,
+	[item_Available_Quantity] [bigint] NULL,
+	[item_Sell_Quantity] [bigint] NULL,
+	[item_Description] [nvarchar](max) NULL,
+	[item_img] [varchar](max) NULL,
+	[item_CategoryId] [int] NULL,
+	[item_SallerId] [int] NULL,
+	[item_DeliveryCharges] [int] NULL,
+	[item_ChooseProdQty] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[item_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[saller]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[saller](
+	[Saller_id] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Passcode] [varchar](100) NULL,
+	[Address] [nvarchar](max) NULL,
+	[bio] [nvarchar](max) NULL,
+	[Gender] [nvarchar](50) NULL,
+	[Dob] [nvarchar](100) NULL,
+	[Phone] [varchar](50) NULL,
+	[img] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Saller_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[userBankDetails]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[userBankDetails](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[BankName] [varchar](100) NULL,
+	[Branch] [varchar](max) NULL,
+	[cardName] [varchar](100) NULL,
+	[cardNumber] [bigint] NULL,
+	[cvvNumber] [int] NULL,
+	[userbankID] [int] NULL,
+	[DateTime] [datetime] NULL,
+	[itemId] [int] NULL,
+	[buyQty] [int] NULL,
+	[payMoney] [varchar](max) NULL,
+	[userEmail] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[userData]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[userData](
+	[userId] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Passcode] [varchar](100) NULL,
+	[Address] [nvarchar](max) NULL,
+	[bio] [nvarchar](max) NULL,
+	[Gender] [nvarchar](50) NULL,
+	[Dob] [nvarchar](100) NULL,
+	[Phone] [varchar](50) NULL,
+	[img] [varchar](max) NULL,
+	[UserSallerId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[userId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[userDeliveryAddress]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[userDeliveryAddress](
+	[uDevId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](100) NULL,
+	[Mobile] [bigint] NULL,
+	[Pincode] [bigint] NULL,
+	[Locality] [varchar](100) NULL,
+	[Address] [varchar](max) NULL,
+	[State] [varchar](100) NULL,
+	[Landmark] [varchar](100) NULL,
+	[AlternatePhone] [bigint] NULL,
+	[AddressType] [varchar](100) NULL,
+	[DeliveryUserId] [int] NULL,
+	[indiaStateId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[uDevId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[userDeliveryAddress_]    Script Date: 11/14/2023 12:31:30 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[userDeliveryAddress_](
+	[uDevId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](100) NULL,
+	[Mobile] [bigint] NULL,
+	[Pincode] [bigint] NULL,
+	[Locality] [varchar](100) NULL,
+	[Address] [varchar](max) NULL,
+	[State] [varchar](100) NULL,
+	[Landmark] [varchar](100) NULL,
+	[AlternatePhone] [bigint] NULL,
+	[AddressType] [varchar](100) NULL,
+	[DeliveryUserId] [int] NULL,
+	[indiaStateId] [int] NULL,
+	[itemDeliveryId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[uDevId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[userBankDetails] ADD  CONSTRAINT [DF_userBankDetails_DateTime]  DEFAULT (getdate()) FOR [DateTime]
+GO
+ALTER TABLE [dbo].[cart]  WITH CHECK ADD FOREIGN KEY([itemCartID])
+REFERENCES [dbo].[item] ([item_id])
+GO
+ALTER TABLE [dbo].[cart]  WITH CHECK ADD FOREIGN KEY([userCartID])
+REFERENCES [dbo].[userData] ([userId])
+GO
+ALTER TABLE [dbo].[Category]  WITH CHECK ADD FOREIGN KEY([salllerCatId])
+REFERENCES [dbo].[saller] ([Saller_id])
+GO
+ALTER TABLE [dbo].[item]  WITH CHECK ADD FOREIGN KEY([item_CategoryId])
+REFERENCES [dbo].[Category] ([cat_id])
+GO
+ALTER TABLE [dbo].[item]  WITH CHECK ADD FOREIGN KEY([item_SallerId])
+REFERENCES [dbo].[saller] ([Saller_id])
+GO
+ALTER TABLE [dbo].[userBankDetails]  WITH CHECK ADD  CONSTRAINT [FK__userBankD__userb__7C4F7684] FOREIGN KEY([itemId])
+REFERENCES [dbo].[item] ([item_id])
+GO
+ALTER TABLE [dbo].[userBankDetails] CHECK CONSTRAINT [FK__userBankD__userb__7C4F7684]
+GO
+ALTER TABLE [dbo].[userData]  WITH CHECK ADD FOREIGN KEY([UserSallerId])
+REFERENCES [dbo].[saller] ([Saller_id])
+GO
+ALTER TABLE [dbo].[userDeliveryAddress]  WITH CHECK ADD FOREIGN KEY([DeliveryUserId])
+REFERENCES [dbo].[userData] ([userId])
+GO
+ALTER TABLE [dbo].[userDeliveryAddress]  WITH CHECK ADD FOREIGN KEY([indiaStateId])
+REFERENCES [dbo].[IndiaState] ([stateId])
+GO
+ALTER TABLE [dbo].[userDeliveryAddress_]  WITH CHECK ADD FOREIGN KEY([DeliveryUserId])
+REFERENCES [dbo].[userData] ([userId])
+GO
+ALTER TABLE [dbo].[userDeliveryAddress_]  WITH CHECK ADD FOREIGN KEY([indiaStateId])
+REFERENCES [dbo].[IndiaState] ([stateId])
+GO
+ALTER TABLE [dbo].[userDeliveryAddress_]  WITH CHECK ADD FOREIGN KEY([itemDeliveryId])
+REFERENCES [dbo].[item] ([item_id])
+GO
